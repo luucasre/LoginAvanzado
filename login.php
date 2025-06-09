@@ -13,32 +13,34 @@
     <h1 class="mb-4">Resultado del Inicio de Sesión</h1>
 
     <?php 
-    include("con_db.php");
+include("con_db.php");
 
-    if (isset($_POST['login'])) {
-        if (!empty($_POST['user']) && !empty($_POST['pass'])) {
-            $user = trim($_POST['user']);
-            $pass = trim($_POST['pass']);
+if (isset($_POST['login'])) {
+    if (!empty($_POST['user']) && !empty($_POST['pass'])) {
+        $user = trim($_POST['user']);
+        $pass = trim($_POST['pass']);
 
-            $consulta = "SELECT * FROM usuario WHERE user='$user' AND pass='$pass'";
-            $resultado = mysqli_query($conex, $consulta);
+        // Buscar solo por user
+        $consulta = "SELECT * FROM usuario WHERE user='$user' LIMIT 1";
+        $resultado = mysqli_query($conex, $consulta);
+        $a = mysqli_fetch_assoc($resultado);
 
-            if ($resultado && mysqli_num_rows($resultado) > 0) {
-                echo '<div class="alert alert-success" role="alert">
-                        Inicio de sesión exitoso. ¡Bienvenido!
-                      </div>';
-            } else {
-                echo '<div class="alert alert-danger" role="alert">
-                        Usuario o contraseña incorrectos.
-                      </div>';
-            }
+        if ($a && password_verify($pass, $a['pass_cifrada'])) {
+            echo '<div class="alert alert-success" role="alert">
+                    Inicio de sesión exitoso. ¡Bienvenido!
+                  </div>';
         } else {
-            echo '<div class="alert alert-warning" role="alert">
-                    ¡Por favor, complete todos los campos!
+            echo '<div class="alert alert-danger" role="alert">
+                    Usuario o contraseña incorrectos.
                   </div>';
         }
+    } else {
+        echo '<div class="alert alert-warning" role="alert">
+                ¡Por favor, complete todos los campos!
+              </div>';
     }
-    ?>
+}
+?>
      
     <div class="mt-3 mb-3">
       <a href="formregistro.html" class="btn btn-secondary">Registrarse</a>

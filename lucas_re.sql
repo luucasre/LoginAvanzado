@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2025 a las 02:37:33
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 06-06-2025 a las 06:01:48
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,14 @@ CREATE TABLE `recuperar` (
   `FECHA_ALTA` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `recuperar`
+--
+
+INSERT INTO `recuperar` (`EMAIL`, `CLAVE_NUEVA`, `TOKEN`, `FECHA_ALTA`) VALUES
+('j@gmail.com', 68849441, '5a369d7ced9f1b16a1a78190a153c90c', '2025-06-05 21:55:35'),
+('j@gmail.com', 81267636, '016cedfc2e44eac26aec23994f6cbf02', '2025-06-05 22:00:45');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +53,7 @@ CREATE TABLE `usuario` (
   `apellido` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pass_cifrada` varchar(60) NOT NULL,
+  `pass` varchar(51) NOT NULL,
   `user` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -52,12 +61,12 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`nombre`, `apellido`, `email`, `pass_cifrada`, `user`) VALUES
-('lucas', 're', 'lucas@gmail.com', 'pedo123', 'luqui'),
-('lucas', 're', 're@gmail.com', '', 'luqui'),
-('lucas', 're', 're@gmail.com', '59919086', 'luqui'),
-('Nuevo', 'Final', 'n@n.com', '$2y$10$W8RBHxqoUYMWLB7zRJ7/FO18HbZFSoDFM9cNucXR9i8Eot.o9ZgZW', 'n'),
-('Juan Domingo', 'Peron', 'jdperon@gmail.com', '$2y$10$rPKKFmh2bfCybbtPFOlD6uNZwoLiWj2lpEBasBy86/TfZZ0IZ.xYS', 'jdperon');
+INSERT INTO `usuario` (`nombre`, `apellido`, `email`, `pass_cifrada`, `pass`, `user`) VALUES
+('j', 'j', 'j@gmail.com', '$2y$10$sxxMSQ.4SYItmgyDaahTAuSUga0sh7meUBdWL7jeDXiVDKZGHTFoG', 'j', 'j'),
+('j', 'j', 'j@gmail.com', '$2y$10$3J8oZqutQehP5QhDeMkpZef0Odtyq2619Jdqxt0HCYLSyx3AgGgvK', 'j', 'j'),
+('j', 'j', 'j@gmail.com', '$2y$10$3gYZdkc2rg3SjTonXPIwl.gysGXsDIOoa6LMqW9ud6YkkwZhPMKam', 'j', 'j'),
+('j', 'j', 'j@gmail.com', '$2y$10$Ks3dg.XgYSXPO8kYdNW.H.OPIB.G32czcUEPqaWUfXcfEuC/YXHfi', 'j', 'j'),
+('B', 'B', 'B@gmail.com', '$2y$10$QSg2IH7.tUGx5.9R2ZLfPea02rCQSZ96XQQkMEyTNw85WjZCTJ9DC', 'B', 'b');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
