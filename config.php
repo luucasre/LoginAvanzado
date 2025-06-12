@@ -1,8 +1,8 @@
 <?php
      require_once 'vendor/autoload.php'; 
 
-    $clientID = "855280263416-3usr07qtd857o6mg7lgg2005n8lngih4.apps.googleusercontent.com";
-    $clientSecret = "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";
+    $clientID = "855280263416-xxxxxxxxxxxxxxx.apps.googleusercontent.com";
+    $clientSecret = "xxxxxxxxxxxx";
     $redirectUri = "https://localhost/profe/login.php"; // Asegúrate que coincide con lo configurado en Google Console
 
 // create Client Request to access Google API
